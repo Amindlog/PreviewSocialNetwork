@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Logic\" />
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\PreviewSocialNetwork.Domain\PreviewSocialNetwork.Domain.csproj" />
   </ItemGroup>
 
 </Project>
