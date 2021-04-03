@@ -15,5 +15,10 @@ namespace PreviewSocialNetwork.App.Logic
         {
             throw new NotImplementedException();
         }
+
+        public bool AuthorizationServices(IAuth auth)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

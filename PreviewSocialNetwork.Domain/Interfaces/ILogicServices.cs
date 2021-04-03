@@ -27,7 +27,7 @@ namespace PreviewSocialNetwork.Domain.Interfaces
         /// Метод парсинга строки для получения сервис отправки сообщения.
         /// </summary>
         /// <param name="message">Текст задачи.</param>
-        /// <returns>1 - Telegram, 2 - Discord, 3 - Vk</returns>
+        /// <returns>1 - Telegram, 2 - Discord, 3 - Vk, 4 - Twitter</returns>
         List<int> ParserStringGetIssue(string message);
 
 
