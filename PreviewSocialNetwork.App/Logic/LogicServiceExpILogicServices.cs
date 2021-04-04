@@ -6,15 +6,15 @@ using PreviewSocialNetwork.Domain.Models;
 namespace PreviewSocialNetwork.App.Services
 {
     public delegate bool SendMessage(IMessagePreview message);
-    public class LogicServiceExpILogicServices : ILogicServices
+    public class LogicServiceExpILogicServices
     {
         private SendMessage _sendMessage;
         public LogicServiceExpILogicServices()
         {
-            var vk = new VkService();
-            var discord = new DiscordService();
-            var telegram = new TelegramService();
-            var twitter = new TwitterService();
+            IServiceSocialNetwork vk = new VkService();
+            IServiceSocialNetwork discord = new DiscordService();
+            IServiceSocialNetwork telegram = new TelegramService();
+            IServiceSocialNetwork twitter = new TwitterService();
 
             _sendMessage = vk.SendSocialNetwork;
             _sendMessage += discord.SendSocialNetwork;
@@ -55,6 +55,7 @@ namespace PreviewSocialNetwork.App.Services
 
 
         }
+        /*
         public IServiceSocialNetwork Service { get; }
 
         public List<int> ParserStringGetIssue(string message)//1 2 3
@@ -67,6 +68,6 @@ namespace PreviewSocialNetwork.App.Services
             }
             return list;
         }
-
+        */
     }
 }
