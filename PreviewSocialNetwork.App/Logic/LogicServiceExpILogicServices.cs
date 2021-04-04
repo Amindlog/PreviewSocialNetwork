@@ -17,9 +17,9 @@ namespace PreviewSocialNetwork.App.Services
             IServiceSocialNetwork twitter = new TwitterService();
 
             _sendMessage = vk.SendSocialNetwork;
-            _sendMessage += discord.SendSocialNetwork;
+            //_sendMessage += discord.SendSocialNetwork;
             _sendMessage += telegram.SendSocialNetwork;
-            _sendMessage += twitter.SendSocialNetwork;
+            //_sendMessage += twitter.SendSocialNetwork;
         }
 
         public void StartProgram()
