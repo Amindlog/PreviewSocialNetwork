@@ -9,7 +9,7 @@ namespace PreviewSocialNetwork.Domain.Models
 {
     public class MessagePreview : IMessagePreview
     {
-        public string MessageText { get; }
-        public string TimeMessage { get; }
+        public string MessageText { get; set; }
+        public string TimeMessage { get; set; }
     }
 }
