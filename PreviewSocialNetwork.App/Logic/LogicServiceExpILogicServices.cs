@@ -9,11 +9,11 @@ namespace PreviewSocialNetwork.App.Services
 {
     public class LogicServiceExpILogicServices : ILogicServices
     {
-        IServiceSocialNetwork Service { get; }
+        public IServiceSocialNetwork Service { get; }
 
-        IAuth Authorization { get; }
 
-        List<int> ParserStringGetIssue(string message)//1 2 3
+
+        public List<int> ParserStringGetIssue(string message)//1 2 3
         {
             List<int> list = new List<int>();
             string[] words = message.Split(' ');
@@ -24,9 +24,5 @@ namespace PreviewSocialNetwork.App.Services
             return list;
         }
 
-        bool AuthorizationServices(IAuth auth)//нужен или нет?
-        {
-            throw new ArgumentNullException();
-        }
     }
 }

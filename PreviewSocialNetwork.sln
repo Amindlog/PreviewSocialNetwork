@@ -7,11 +7,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork", "Pre
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B3B3367E-3AA0-43DF-BC4B-837858D20261}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.Domain", "PreviewSocialNetwork.Domain\PreviewSocialNetwork.Domain.csproj", "{5F3307A9-3B10-4738-90EF-A30904D78E87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.Domain", "PreviewSocialNetwork.Domain\PreviewSocialNetwork.Domain.csproj", "{5F3307A9-3B10-4738-90EF-A30904D78E87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.App", "PreviewSocialNetwork.App\PreviewSocialNetwork.App.csproj", "{B8A7A401-417F-4AF3-969D-57A03BA40548}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.App", "PreviewSocialNetwork.App\PreviewSocialNetwork.App.csproj", "{B8A7A401-417F-4AF3-969D-57A03BA40548}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3A07C99C-4509-4989-B3C8-54EA4F515CD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{C11B373B-0D51-47DE-862F-92C73055A908}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{72F78809-A5A1-43C9-89C8-3B45E3CA9C98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.TelegramService", "PreviewSocialNetwork.TelegramService\PreviewSocialNetwork.TelegramService.csproj", "{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.DiscordService", "PreviewSocialNetwork.DiscordService\PreviewSocialNetwork.DiscordService.csproj", "{17A080AD-D4B8-4D2F-A850-9882C66D7549}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.TwitterService", "PreviewSocialNetwork.TwitterService\PreviewSocialNetwork.TwitterService.csproj", "{1F0553C8-53DC-481C-877E-4D7B8B90B8AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.VkService", "PreviewSocialNetwork.VkService\PreviewSocialNetwork.VkService.csproj", "{42B284AB-2368-4DF9-A1FD-C85F10602D1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +43,22 @@ Global
 		{B8A7A401-417F-4AF3-969D-57A03BA40548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8A7A401-417F-4AF3-969D-57A03BA40548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8A7A401-417F-4AF3-969D-57A03BA40548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17A080AD-D4B8-4D2F-A850-9882C66D7549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17A080AD-D4B8-4D2F-A850-9882C66D7549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17A080AD-D4B8-4D2F-A850-9882C66D7549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17A080AD-D4B8-4D2F-A850-9882C66D7549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F0553C8-53DC-481C-877E-4D7B8B90B8AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F0553C8-53DC-481C-877E-4D7B8B90B8AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F0553C8-53DC-481C-877E-4D7B8B90B8AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F0553C8-53DC-481C-877E-4D7B8B90B8AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42B284AB-2368-4DF9-A1FD-C85F10602D1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42B284AB-2368-4DF9-A1FD-C85F10602D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42B284AB-2368-4DF9-A1FD-C85F10602D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42B284AB-2368-4DF9-A1FD-C85F10602D1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,7 +66,13 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{38B4135E-2011-47DB-879E-3A897E5BF857} = {3A07C99C-4509-4989-B3C8-54EA4F515CD5}
 		{5F3307A9-3B10-4738-90EF-A30904D78E87} = {B3B3367E-3AA0-43DF-BC4B-837858D20261}
-		{B8A7A401-417F-4AF3-969D-57A03BA40548} = {B3B3367E-3AA0-43DF-BC4B-837858D20261}
+		{B8A7A401-417F-4AF3-969D-57A03BA40548} = {72F78809-A5A1-43C9-89C8-3B45E3CA9C98}
+		{C11B373B-0D51-47DE-862F-92C73055A908} = {B3B3367E-3AA0-43DF-BC4B-837858D20261}
+		{72F78809-A5A1-43C9-89C8-3B45E3CA9C98} = {B3B3367E-3AA0-43DF-BC4B-837858D20261}
+		{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22} = {C11B373B-0D51-47DE-862F-92C73055A908}
+		{17A080AD-D4B8-4D2F-A850-9882C66D7549} = {C11B373B-0D51-47DE-862F-92C73055A908}
+		{1F0553C8-53DC-481C-877E-4D7B8B90B8AB} = {C11B373B-0D51-47DE-862F-92C73055A908}
+		{42B284AB-2368-4DF9-A1FD-C85F10602D1C} = {C11B373B-0D51-47DE-862F-92C73055A908}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1EFBA960-70D2-4132-A3CF-FFBCEAE1677D}

@@ -17,11 +17,6 @@ namespace PreviewSocialNetwork.Domain.Interfaces
         IServiceSocialNetwork Service { get; }
 
 
-        /// <summary>
-        /// Свойство содержащее данные для авторизации.
-        /// </summary>
-        IAuth Authorization { get; }
-
 
         /// <summary>
         /// Метод парсинга строки для получения сервис отправки сообщения.
@@ -29,18 +24,6 @@ namespace PreviewSocialNetwork.Domain.Interfaces
         /// <param name="message">Текст задачи.</param>
         /// <returns>1 - Telegram, 2 - Discord, 3 - Vk, 4 - Twitter</returns>
         List<int> ParserStringGetIssue(string message);
-
-
-
-        /// <summary>
-        /// Метод авторизации в сервисах.
-        /// </summary>
-        /// <param name="auth">Интерфейс авторизации.</param>
-        /// <returns>true - авторизация успешна, false - авторизация не прошла.</returns>
-        bool AuthorizationServices(IAuth auth);
-
-
-
 
     }
 }
