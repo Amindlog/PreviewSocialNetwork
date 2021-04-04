@@ -42,7 +42,7 @@ namespace PreviewSocialNetwork.App.Services
             var response = await client.GetAsync(url);
             if (response.StatusCode == HttpStatusCode.OK)
             {
-                Console.WriteLine($"Ответ от Telegram: " + response.StatusCode);
+                //Console.WriteLine($"Ответ от Telegram: " + response.StatusCode);
                 return true;
             }
 
