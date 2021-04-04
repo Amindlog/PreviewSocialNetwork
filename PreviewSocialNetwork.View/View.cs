@@ -12,12 +12,12 @@ namespace PreviewSocialNetwork.View
         static public void SuccessSendMessage()
         {
             Console.Clear();
-            Console.WriteLine("Все сообщения успешно отправиелы.");
+            Console.WriteLine("Все сообщения успешно отправлены.");
         }
         static public void ErrorSendMessage()
         {
             Console.Clear();
-            Console.WriteLine("Не все сообщения были отправиелы.");
+            Console.WriteLine("Не все сообщения были отправлены.");
         }
         static public void Menu()
         {
