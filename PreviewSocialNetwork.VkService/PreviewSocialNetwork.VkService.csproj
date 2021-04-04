@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="VkNet" Version="1.61.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\PreviewSocialNetwork.Domain\PreviewSocialNetwork.Domain.csproj" />
   </ItemGroup>
 
