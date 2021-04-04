@@ -25,18 +25,28 @@ namespace PreviewSocialNetwork.App.Services
 
         public bool SendSocialNetwork(IMessagePreview message)
         {
-            SendMessage(Client, message);
-            return true;
+            var result = SendMessage(Client, message);
+            if (result.Result == true)
+            {
+                return true;
+            }
+
+            return false;
+
         }
 
 
-        public async void SendMessage (HttpClient client, IMessagePreview message)
+        public async Task<bool> SendMessage (HttpClient client, IMessagePreview message)
         {
             var url = $"https://api.telegram.org/bot{_botToken}/sendMessage?chat_id={_chat_id}&text={message.TimeMessage}{message.MessageText}";
             var response = await client.GetAsync(url);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Console.WriteLine($"Ответ от Telegram: " + response.StatusCode);
+                return true;
+            }
 
-            Console.WriteLine($"Ответ от Telegram: " + response.StatusCode);
-        
+            return false;
 
         }
 
