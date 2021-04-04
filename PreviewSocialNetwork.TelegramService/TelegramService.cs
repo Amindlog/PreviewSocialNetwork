@@ -10,7 +10,7 @@ using PreviewSocialNetwork.Domain.Models;
 
 namespace PreviewSocialNetwork.App.Services
 {
-    public class TelegramService : IServiceSocialNetwork, IAuth
+    public class TelegramService : IServiceSocialNetwork
     {
         private string _botToken = "718470687:AAF-SsRrPbXWoPyHLo8lIN7aHowpGzjg-Go";
         private int chat_id = 0;
