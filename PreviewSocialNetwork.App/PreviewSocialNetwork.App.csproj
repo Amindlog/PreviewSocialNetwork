@@ -5,7 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PreviewSocialNetwork.DiscordService\PreviewSocialNetwork.DiscordService.csproj" />
     <ProjectReference Include="..\PreviewSocialNetwork.Domain\PreviewSocialNetwork.Domain.csproj" />
+    <ProjectReference Include="..\PreviewSocialNetwork.TelegramService\PreviewSocialNetwork.TelegramService.csproj" />
+    <ProjectReference Include="..\PreviewSocialNetwork.TwitterService\PreviewSocialNetwork.TwitterService.csproj" />
+    <ProjectReference Include="..\PreviewSocialNetwork.VkService\PreviewSocialNetwork.VkService.csproj" />
   </ItemGroup>
 
 </Project>

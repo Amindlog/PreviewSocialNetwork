@@ -1,4 +1,5 @@
 ﻿using System;
+using PreviewSocialNetwork.App.Services;
 
 namespace PreviewSocialNetwork
 {
@@ -6,7 +7,10 @@ namespace PreviewSocialNetwork
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var logic = new LogicServiceExpILogicServices();
+            logic.StartProgram();
+
+            Console.WriteLine("----");
         }
     }
 }

@@ -7,8 +7,31 @@ using System.Threading.Tasks;
 
 namespace PreviewSocialNetwork.App.Services
 {
+    public delegate bool SendMessage(IMessagePreview message);
     public class LogicServiceExpILogicServices : ILogicServices
     {
+        public LogicServiceExpILogicServices()
+        {
+            var vk = new VkService();
+            var discord = new DiscordService();
+            var telegram = new TelegramService();
+            var twitter = new TwitterService();
+
+            SendMessage sendMessage = vk.SendSocialNetwork;
+            sendMessage += discord.SendSocialNetwork;
+            sendMessage += telegram.SendSocialNetwork;
+            sendMessage += twitter.SendSocialNetwork;
+        }
+
+        public void StartProgram()
+        {
+            Loop();
+        }
+
+        private void Loop()
+        {
+            
+        }
         public IServiceSocialNetwork Service { get; }
 
 
