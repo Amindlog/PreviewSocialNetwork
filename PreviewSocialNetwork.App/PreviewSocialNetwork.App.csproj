@@ -9,6 +9,7 @@
     <ProjectReference Include="..\PreviewSocialNetwork.Domain\PreviewSocialNetwork.Domain.csproj" />
     <ProjectReference Include="..\PreviewSocialNetwork.TelegramService\PreviewSocialNetwork.TelegramService.csproj" />
     <ProjectReference Include="..\PreviewSocialNetwork.TwitterService\PreviewSocialNetwork.TwitterService.csproj" />
+    <ProjectReference Include="..\PreviewSocialNetwork.View\PreviewSocialNetwork.View.csproj" />
     <ProjectReference Include="..\PreviewSocialNetwork.VkService\PreviewSocialNetwork.VkService.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,8 @@
 ﻿using System;
 using PreviewSocialNetwork.App.Services;
+using PreviewSocialNetwork.View;
 
-namespace PreviewSocialNetwork
+namespace StartProgram
 {
     class Program
     {
@@ -9,8 +10,6 @@ namespace PreviewSocialNetwork
         {
             var logic = new LogicServiceExpILogicServices();
             logic.StartProgram();
-
-            Console.WriteLine("----");
         }
     }
 }
