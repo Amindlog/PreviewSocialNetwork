@@ -9,6 +9,16 @@ namespace PreviewSocialNetwork.View
             Console.WriteLine(text);
         }
 
+        static public void SuccessSendMessage()
+        {
+            Console.Clear();
+            Console.WriteLine("Все сообщения успешно отправиелы.");
+        }
+        static public void ErrorSendMessage()
+        {
+            Console.Clear();
+            Console.WriteLine("Не все сообщения были отправиелы.");
+        }
         static public void Menu()
         {
             Console.Clear();
