@@ -39,11 +39,19 @@ namespace PreviewSocialNetwork.App.Services
                     case ConsoleKey.NumPad1:
                     case ConsoleKey.D1:
                         View.View.Action1();
-                        _sendMessage.Invoke(new MessagePreview()
-                            {
-                                MessageText = Console.ReadLine(),
-                                TimeMessage = DateTime.Now.ToString()
-                            });
+                        if (_sendMessage.Invoke(new MessagePreview()
+                                {
+                                    MessageText = Console.ReadLine(),
+                                    TimeMessage = DateTime.Now.ToString()
+                                }))
+                        {
+                            View.View.SuccessSendMessage();
+                        }
+                        else
+                        {
+                            View.View.ErrorSendMessage();
+                        }
+                        Console.ReadKey();
                         break;
                     case ConsoleKey.NumPad0:
                     case ConsoleKey.D0:
