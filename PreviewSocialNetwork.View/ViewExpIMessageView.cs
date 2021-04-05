@@ -1,25 +1,26 @@
 ﻿using System;
+using PreviewSocialNetwork.Domain.Interfaces;
 
 namespace PreviewSocialNetwork.View
 {
-    public class View
+    public class ViewExpIMessageView : IMessageView
     {
-        static public void PrintLine(string text)
+        public void PrintLine(string text)
         {
             Console.WriteLine(text);
         }
 
-        static public void SuccessSendMessage()
+        public  void SuccessSendMessage()
         {
             Console.Clear();
             Console.WriteLine("Все сообщения успешно отправлены.");
         }
-        static public void ErrorSendMessage()
+        public void ErrorSendMessage()
         {
             Console.Clear();
             Console.WriteLine("Не все сообщения были отправлены.");
         }
-        static public void Menu()
+        public void Menu()
         {
             Console.Clear();
             Console.WriteLine("Доступные действия:");
@@ -27,13 +28,13 @@ namespace PreviewSocialNetwork.View
             Console.WriteLine("0 - Выйти из приложения.");
         }
 
-        static public void Action1()
+        public  void InputText()
         {
             Console.Clear();
             PrintLine("Введите текст для отправки в соцсети:");
         }
 
-        static public void Action0()
+        public  void PrintTextExitApp()
         {
             PrintLine("Приложение завершено.");
         }
