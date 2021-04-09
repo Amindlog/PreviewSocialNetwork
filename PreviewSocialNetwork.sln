@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{B3B3367E-3AA0-43DF-BC4B-837858D20261}"
+	ProjectSection(SolutionItems) = preProject
+		StartProgram\Config.json = StartProgram\Config.json
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.Domain", "PreviewSocialNetwork.Domain\PreviewSocialNetwork.Domain.csproj", "{5F3307A9-3B10-4738-90EF-A30904D78E87}"
 EndProject
@@ -15,17 +18,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{C11B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logic", "Logic", "{72F78809-A5A1-43C9-89C8-3B45E3CA9C98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.TelegramService", "PreviewSocialNetwork.TelegramService\PreviewSocialNetwork.TelegramService.csproj", "{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.TelegramService", "PreviewSocialNetwork.TelegramService\PreviewSocialNetwork.TelegramService.csproj", "{A5ADFEE6-0E3D-49B2-8D79-9EFF10D93D22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.DiscordService", "PreviewSocialNetwork.DiscordService\PreviewSocialNetwork.DiscordService.csproj", "{17A080AD-D4B8-4D2F-A850-9882C66D7549}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.DiscordService", "PreviewSocialNetwork.DiscordService\PreviewSocialNetwork.DiscordService.csproj", "{17A080AD-D4B8-4D2F-A850-9882C66D7549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.TwitterService", "PreviewSocialNetwork.TwitterService\PreviewSocialNetwork.TwitterService.csproj", "{1F0553C8-53DC-481C-877E-4D7B8B90B8AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.TwitterService", "PreviewSocialNetwork.TwitterService\PreviewSocialNetwork.TwitterService.csproj", "{1F0553C8-53DC-481C-877E-4D7B8B90B8AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.VkService", "PreviewSocialNetwork.VkService\PreviewSocialNetwork.VkService.csproj", "{42B284AB-2368-4DF9-A1FD-C85F10602D1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.VkService", "PreviewSocialNetwork.VkService\PreviewSocialNetwork.VkService.csproj", "{42B284AB-2368-4DF9-A1FD-C85F10602D1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartProgram", "StartProgram\StartProgram.csproj", "{5E12A65C-33A7-4FA1-B122-7F5B05A8DFA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StartProgram", "StartProgram\StartProgram.csproj", "{5E12A65C-33A7-4FA1-B122-7F5B05A8DFA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewSocialNetwork.View", "PreviewSocialNetwork.View\PreviewSocialNetwork.View.csproj", "{D9F808A9-9E2A-4539-9404-B236800BCC49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PreviewSocialNetwork.View", "PreviewSocialNetwork.View\PreviewSocialNetwork.View.csproj", "{D9F808A9-9E2A-4539-9404-B236800BCC49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

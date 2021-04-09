@@ -1,6 +1,7 @@
 ﻿using PreviewSocialNetwork.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using PreviewSocialNetwork.App.Config;
 using PreviewSocialNetwork.Domain.Models;
 
 namespace PreviewSocialNetwork.App.Services
@@ -23,6 +24,8 @@ namespace PreviewSocialNetwork.App.Services
             //_sendMessage += discord.SendSocialNetwork;
             _sendMessage += telegram.SendSocialNetwork;
             //_sendMessage += twitter.SendSocialNetwork;
+
+            var con = new ConfigService().ReadConfigurationTask();
         }
 
         public void StartProgram()
@@ -35,31 +38,31 @@ namespace PreviewSocialNetwork.App.Services
             bool finised = true;
             while (finised)
             {
-                _view.Menu();
-                
+                _view.PrintLine("Доступные действия: \n1 - Отправить сообщение: \n0 - Выйти из приложения.");
+
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.NumPad1:
                     case ConsoleKey.D1:
-                        _view.InputText();
+                        _view.PrintLine("Введите текст для отправки в соцсети:");
                         if (_sendMessage.Invoke(new MessagePreview()
-                                {
-                                    MessageText = Console.ReadLine(),
-                                    TimeMessage = DateTime.Now.ToString()
-                                }))
+                        {
+                            MessageText = Console.ReadLine(),
+                            TimeMessage = DateTime.Now.ToString()
+                        }))
                         {
                             _view.SuccessSendMessage();
                         }
                         else
                         {
-                            _view.ErrorSendMessage();
+                            _view.ErrorSendMessage("Отправка сообщений не удалась");
                         }
                         Console.ReadKey();
                         break;
                     case ConsoleKey.NumPad0:
                     case ConsoleKey.D0:
                         finised = false;
-                        _view.PrintTextExitApp();
+                        _view.PrintLine("Приложение завершено.");
                         break;
                 }
             }

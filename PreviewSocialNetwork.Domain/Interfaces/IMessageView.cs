@@ -9,9 +9,7 @@ namespace PreviewSocialNetwork.Domain.Interfaces
     public interface IMessageView
     {
         void SuccessSendMessage();
-        void ErrorSendMessage();
-        void Menu();
-        void InputText();
-        void PrintTextExitApp();
+        void ErrorSendMessage(string messageError);
+        void PrintLine(string text);
     }
 }

@@ -7,36 +7,18 @@ namespace PreviewSocialNetwork.View
     {
         public void PrintLine(string text)
         {
+            Console.Clear();
             Console.WriteLine(text);
         }
 
-        public  void SuccessSendMessage()
+        public void SuccessSendMessage()
         {
-            Console.Clear();
-            Console.WriteLine("Все сообщения успешно отправлены.");
+            PrintLine("Все сообщения успешно отправлены.");
         }
-        public void ErrorSendMessage()
+        public void ErrorSendMessage(string messageError)
         {
-            Console.Clear();
-            Console.WriteLine("Не все сообщения были отправлены.");
-        }
-        public void Menu()
-        {
-            Console.Clear();
-            Console.WriteLine("Доступные действия:");
-            Console.WriteLine("1 - Отправить сообщение:");
-            Console.WriteLine("0 - Выйти из приложения.");
+            PrintLine($"Ошибка: {messageError}");
         }
 
-        public  void InputText()
-        {
-            Console.Clear();
-            PrintLine("Введите текст для отправки в соцсети:");
-        }
-
-        public  void PrintTextExitApp()
-        {
-            PrintLine("Приложение завершено.");
-        }
     }
 }
