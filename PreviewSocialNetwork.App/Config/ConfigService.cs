@@ -47,7 +47,6 @@ namespace PreviewSocialNetwork.App.Config
                 _messageView.ErrorSendMessage(e.ToString());
                 throw;
             }
-
         }
 
         public TelegramConfig GetTelegramConfig()//возвращаем конфиг данные

@@ -1,28 +1,27 @@
 ﻿using PreviewSocialNetwork.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using PreviewSocialNetwork.App.Config;
 using PreviewSocialNetwork.Domain.Models;
 
 namespace PreviewSocialNetwork.App.Services
 {
-    public delegate bool SendMessage(IMessagePreview message);
-    public class LogicServiceExpILogicServices : ILogicServices
+    public delegate bool SendMessageDelegate(IMessagePreview message);
+    public class LogicService : ILogicServices
     {
 
         private IMessageView _view;
-        private SendMessage _sendMessage;
-        private IConfig _config;
-        public LogicServiceExpILogicServices()
+        private SendMessageDelegate _sendMessage;
+        
+        public LogicService(IConfig config)
         {
-            _config = new ConfigService();
-
             _view = new View.ViewExpIMessageView(); //подключение к вьюшке
 
 
             //IServiceSocialNetwork vk = new VkService();
             //IServiceSocialNetwork discord = new DiscordService();
-            IServiceSocialNetwork telegram = new TelegramService(_config);
+            IServiceSocialNetwork telegram = new TelegramService(config.GetTelegramConfig().Token, new HttpClient());
             //IServiceSocialNetwork twitter = new TwitterService();
 
 
@@ -30,7 +29,6 @@ namespace PreviewSocialNetwork.App.Services
             //_sendMessage += discord.SendSocialNetwork;
             _sendMessage += telegram.SendSocialNetwork;
             //_sendMessage += twitter.SendSocialNetwork;
-
 
         }
 
@@ -52,10 +50,10 @@ namespace PreviewSocialNetwork.App.Services
                     case ConsoleKey.D1:
                         _view.PrintLine("Введите текст для отправки в соцсети:");
                         if (_sendMessage.Invoke(new MessagePreview()
-                        {
-                            MessageText = Console.ReadLine(),
-                            TimeMessage = DateTime.Now.ToString()
-                        }))
+                                        {
+                                            MessageText = Console.ReadLine(),
+                                            TimeMessage = DateTime.Now.ToString()
+                                        }))
                         {
                             _view.SuccessSendMessage();
                         }

@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using PreviewSocialNetwork.Domain.Interfaces;
@@ -18,13 +19,12 @@ namespace PreviewSocialNetwork.App.Services
         private string _botToken = "";
         private HashSet<long> _allChatIdsList;
 
-
         public HttpClient Client { get; set; }
 
-        public TelegramService(IConfig config)
+        public TelegramService(string token, HttpClient client)
         {
-            _botToken = config.GetTelegramConfig().Token.ToString();
-            Client = new HttpClient();
+            _botToken = token;
+            Client = client;
             _allChatIdsList = new HashSet<long>();
 
             GetUpdate(Client);
@@ -32,28 +32,15 @@ namespace PreviewSocialNetwork.App.Services
 
         public bool SendSocialNetwork(IMessagePreview message)
         {
-            var res = false;
-            foreach (var item in _allChatIdsList)
+            var temp = false;
+
+            foreach (var chatId in _allChatIdsList)
             {
-                var result = SendMessage(Client, message, item);
-                res = true;
-            }
-            if (res == true)
-            {
-                return true;
+                var result = SendMessage(Client, message, chatId);
+                temp = true;
             }
 
-            return false;
-
-        }
-
-
-        public async Task<bool> SendMessage(HttpClient client, IMessagePreview message, long chatIds)
-        {
-
-            var url = $"https://api.telegram.org/bot{_botToken}/sendMessage?chat_id={chatIds}&text={message.TimeMessage}{message.MessageText}";
-            var response = await client.GetAsync(url);
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (temp == true)
             {
                 return true;
             }
@@ -62,18 +49,42 @@ namespace PreviewSocialNetwork.App.Services
         }
 
 
-        public async Task GetUpdate(HttpClient client)
+        private async Task<bool> SendMessage(HttpClient client, IMessagePreview message, long chatIds)
         {
-            var response = await client.GetAsync($"https://api.telegram.org/bot{_botToken}/getUpdates?limit=10");
-            var res = response.Content.ReadAsStringAsync().Result;
-            Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(res);
-            foreach (var item in myDeserializedClass.Result)
+            if (client != null && message != null)
             {
-                _allChatIdsList.Add(item.ChannelPost.SenderChat.Id);
+                var url = $"https://api.telegram.org/bot{_botToken}/sendMessage?chat_id={chatIds}&text={message.TimeMessage}{message.MessageText}";
+
+                var response = await client.GetAsync(url);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
             }
 
+            return false;
+        }
+
+
+        private async void GetUpdate(HttpClient client)
+        {
+            if (client != null)
+            {
+                var response = await client.GetAsync($"https://api.telegram.org/bot{_botToken}/getUpdates?limit=10");
+
+                var res = response.Content.ReadAsStringAsync().Result;
+
+                Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(res);
+
+                foreach (var item in myDeserializedClass.Result)
+                {
+                    if (item.ChannelPost != null)
+                    {
+                        _allChatIdsList.Add(item.ChannelPost.SenderChat.Id);
+                    }
+                }
+            }
         }
     }
-
-
 }

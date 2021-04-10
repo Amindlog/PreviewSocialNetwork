@@ -14,5 +14,8 @@ namespace PreviewSocialNetwork.TelegramService.ModelJson
 
         [JsonProperty("channel_post")]
         public ChannelPost ChannelPost { get; set; }
+
+        [JsonProperty("message")]
+        public Message Message { get; set; }
     }
 }
