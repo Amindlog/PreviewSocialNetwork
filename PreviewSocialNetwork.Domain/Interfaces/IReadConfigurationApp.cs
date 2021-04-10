@@ -15,6 +15,6 @@ namespace PreviewSocialNetwork.Domain.Interfaces
         /// Метод чтения конфигурации из файла.
         /// </summary>
         /// <returns>true - конфигурация загружена, false - ошибка чтения.</returns>
-        Task<bool> ReadConfigurationTask();
+        bool ReadConfigurationTask();
     }
 }

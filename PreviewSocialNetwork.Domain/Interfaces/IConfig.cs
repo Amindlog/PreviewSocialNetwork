@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PreviewSocialNetwork.Domain.Models;
 
 namespace PreviewSocialNetwork.Domain.Interfaces
 {
@@ -11,9 +12,9 @@ namespace PreviewSocialNetwork.Domain.Interfaces
     /// </summary>
     public interface IConfig
     {
-        /// <summary>
-        /// Коллекция ключ, значение конфигурации.
-        /// </summary>
-       Dictionary<string, string> Configuration { get; set; }
+        static List<TelegramConfig> TelegramConfigs { get; set; }
+        static List<VkConfig> VkConfigs { get; set; }
+        TelegramConfig GetTelegramConfig();
+        VkConfig GetVkConfig();
     }
 }

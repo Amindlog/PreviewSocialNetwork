@@ -12,20 +12,26 @@ namespace PreviewSocialNetwork.App.Services
 
         private IMessageView _view;
         private SendMessage _sendMessage;
+        private IConfig _config;
         public LogicServiceExpILogicServices()
         {
+            _config = new ConfigService();
+
             _view = new View.ViewExpIMessageView(); //подключение к вьюшке
+
+
             //IServiceSocialNetwork vk = new VkService();
             //IServiceSocialNetwork discord = new DiscordService();
-            IServiceSocialNetwork telegram = new TelegramService();
+            IServiceSocialNetwork telegram = new TelegramService(_config);
             //IServiceSocialNetwork twitter = new TwitterService();
+
 
             //_sendMessage = vk.SendSocialNetwork;
             //_sendMessage += discord.SendSocialNetwork;
             _sendMessage += telegram.SendSocialNetwork;
             //_sendMessage += twitter.SendSocialNetwork;
 
-            var con = new ConfigService().ReadConfigurationTask();
+
         }
 
         public void StartProgram()

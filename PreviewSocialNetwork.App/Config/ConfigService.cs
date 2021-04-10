@@ -12,15 +12,17 @@ namespace PreviewSocialNetwork.App.Config
     public class ConfigService : IReadConfigurationApp
     {
         private IMessageView _messageView;
-        public Dictionary<string, string> Configuration { get; set; }
+        public static List<TelegramConfig> TelegramConfigs { get; set; } = new List<TelegramConfig>();//сделано коллекцией для будущего
+        public static List<VkConfig> VkConfigs { get; set; } = new List<VkConfig>();//сделано коллекцией для будущего
 
         public ConfigService()
         {
             _messageView = new ViewExpIMessageView();
+            ReadConfigurationTask();
         }
-        public async Task<bool> ReadConfigurationTask()
+        public bool ReadConfigurationTask()
         {
-            if (File.Exists("~/StartProgram/Config.json"))
+            if (!File.Exists("Config.json"))
             {
                 _messageView.ErrorSendMessage("Нет файла конфигурации.");
             }
@@ -28,10 +30,14 @@ namespace PreviewSocialNetwork.App.Config
             try
             {
 
-                using (var stream = new StreamReader("~/StartProgram/Config.json"))
+                using (var stream = new StreamReader("Config.json"))
                 {
-                    var temp = await stream.ReadToEndAsync();
-                    var config = JsonConvert.DeserializeObject<ConModel>(temp);
+                    var temp = stream.ReadToEnd();
+                    var configTempDeserializeObject = JsonConvert.DeserializeObject<ConfigurationAppModel>(temp);
+
+                    TelegramConfigs.Add(configTempDeserializeObject.TelegramConfig);
+                    VkConfigs.Add(configTempDeserializeObject.VkConfig);
+
                     return true;
 
                 }
@@ -42,6 +48,24 @@ namespace PreviewSocialNetwork.App.Config
                 throw;
             }
 
+        }
+
+        public TelegramConfig GetTelegramConfig()//возвращаем конфиг данные
+        {
+            if (TelegramConfigs != null)
+                return TelegramConfigs[0];
+
+            return null;
+        }
+
+        public VkConfig GetVkConfig()//возвращаем конфиг данные
+        {
+            if (VkConfigs != null)
+            {
+                return VkConfigs[0];
+            }
+
+            return null;
         }
     }
 }

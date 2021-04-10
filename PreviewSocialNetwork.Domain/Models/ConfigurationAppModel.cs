@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PreviewSocialNetwork.Domain.Models
 {
-    public class ConModel
+    public class ConfigurationAppModel
     {
         public TelegramConfig TelegramConfig { get; set; }
         public VkConfig VkConfig { get; set; }

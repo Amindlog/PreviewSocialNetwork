@@ -15,16 +15,18 @@ namespace PreviewSocialNetwork.App.Services
 {
     public class TelegramService : IServiceSocialNetwork
     {
-        private string _botToken = "718470687:AAF-SsRrPbXWoPyHLo8lIN7aHowpGzjg-Go";
+        private string _botToken = "";
         private HashSet<long> _allChatIdsList;
-        
+
+
         public HttpClient Client { get; set; }
 
-        public TelegramService()
+        public TelegramService(IConfig config)
         {
+            _botToken = config.GetTelegramConfig().Token.ToString();
             Client = new HttpClient();
             _allChatIdsList = new HashSet<long>();
-            
+
             GetUpdate(Client);
         }
 
@@ -40,23 +42,23 @@ namespace PreviewSocialNetwork.App.Services
             {
                 return true;
             }
-            
+
             return false;
 
         }
 
 
-        public async Task<bool> SendMessage (HttpClient client, IMessagePreview message, long chatIds)
+        public async Task<bool> SendMessage(HttpClient client, IMessagePreview message, long chatIds)
         {
-            
-                var url = $"https://api.telegram.org/bot{_botToken}/sendMessage?chat_id={chatIds}&text={message.TimeMessage}{message.MessageText}";
-                var response = await client.GetAsync(url);
-                if (response.StatusCode == HttpStatusCode.OK)
-                {
-                    return true;
-                }
-                
-                return false;
+
+            var url = $"https://api.telegram.org/bot{_botToken}/sendMessage?chat_id={chatIds}&text={message.TimeMessage}{message.MessageText}";
+            var response = await client.GetAsync(url);
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+
+            return false;
         }
 
 
@@ -73,5 +75,5 @@ namespace PreviewSocialNetwork.App.Services
         }
     }
 
-    
+
 }
