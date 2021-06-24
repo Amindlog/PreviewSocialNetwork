@@ -5,59 +5,86 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PreviewSocialNetwork.Domain.Interfaces;
 using PreviewSocialNetwork.Domain.Models;
+using PreviewSocialNetwork.TelegramService.ModelJson;
 
 namespace PreviewSocialNetwork.App.Services
 {
     public class TelegramService : IServiceSocialNetwork
     {
-        private string _botToken = "718470687:AAF-SsRrPbXWoPyHLo8lIN7aHowpGzjg-Go";
-        private static long _chat_id;
+        private string _botToken = "";
+        private HashSet<long> _allChatIdsList;
+
         public HttpClient Client { get; set; }
 
-        public TelegramService()
+        public TelegramService(string token, HttpClient client)
         {
-            Client = new HttpClient();
+            _botToken = token;
+            Client = client;
+            _allChatIdsList = new HashSet<long>();
+
             GetUpdate(Client);
         }
 
         public bool SendSocialNetwork(IMessagePreview message)
         {
-            var result = SendMessage(Client, message);
-            if (result.Result == true)
+            var temp = false;
+
+            foreach (var chatId in _allChatIdsList)
+            {
+                var result = SendMessage(Client, message, chatId);
+                temp = true;
+            }
+
+            if (temp == true)
             {
                 return true;
             }
 
             return false;
-
         }
 
 
-        public async Task<bool> SendMessage (HttpClient client, IMessagePreview message)
+        private async Task<bool> SendMessage(HttpClient client, IMessagePreview message, long chatIds)
         {
-            var url = $"https://api.telegram.org/bot{_botToken}/sendMessage?chat_id={_chat_id}&text={message.TimeMessage}{message.MessageText}";
-            var response = await client.GetAsync(url);
-            if (response.StatusCode == HttpStatusCode.OK)
+            if (client != null && message != null)
             {
-                //Console.WriteLine($"Ответ от Telegram: " + response.StatusCode);
-                return true;
+                var url = $"https://api.telegram.org/bot{_botToken}/sendMessage?chat_id={chatIds}&text={message.TimeMessage}{message.MessageText}";
+
+                var response = await client.GetAsync(url);
+
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    return true;
+                }
             }
 
             return false;
-
         }
 
-        public async Task GetUpdate(HttpClient client)
+
+        private async void GetUpdate(HttpClient client)
         {
-            var response = await client.GetAsync($"https://api.telegram.org/bot{_botToken}/getUpdates?limit=1");
-            var res = response.Content.ReadAsStringAsync().Result;
-            var stringResultSplit = res.Substring(95).Split(',');
-            _chat_id = Convert.ToInt64(stringResultSplit[0]);
+            if (client != null)
+            {
+                var response = await client.GetAsync($"https://api.telegram.org/bot{_botToken}/getUpdates?limit=10");
+
+                var res = response.Content.ReadAsStringAsync().Result;
+
+                Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(res);
+
+                foreach (var item in myDeserializedClass.Result)
+                {
+                    if (item.ChannelPost != null)
+                    {
+                        _allChatIdsList.Add(item.ChannelPost.SenderChat.Id);
+                    }
+                }
+            }
         }
     }
-
-    
 }

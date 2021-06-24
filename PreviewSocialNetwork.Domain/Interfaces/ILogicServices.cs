@@ -14,7 +14,7 @@ namespace PreviewSocialNetwork.Domain.Interfaces
         /// <summary>
         /// Свойство содержащее в себе сервис.
         /// </summary>
-        IServiceSocialNetwork Service { get; }
+        //IServiceSocialNetwork Service { get; }
 
 
 
@@ -23,7 +23,10 @@ namespace PreviewSocialNetwork.Domain.Interfaces
         /// </summary>
         /// <param name="message">Текст задачи.</param>
         /// <returns>1 - Telegram, 2 - Discord, 3 - Vk, 4 - Twitter</returns>
-        List<int> ParserStringGetIssue(string message);
+        //List<int> ParserStringGetIssue(string message);
 
+        
+        
+        void StartProgram();
     }
 }

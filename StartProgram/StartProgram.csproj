@@ -9,4 +9,10 @@
       <ProjectReference Include="..\PreviewSocialNetwork.App\PreviewSocialNetwork.App.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Config.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
